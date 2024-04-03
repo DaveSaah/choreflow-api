@@ -28,7 +28,7 @@ func main() {
 	// serve Swagger UI
 	mux.HandleFunc(
 		getURI("GET", "swagger/ui/"),
-		httpSwagger.Handler(httpSwagger.URL("http://localhost:3211/choreflow/api/v1/swagger/swagger.yaml")),
+		httpSwagger.Handler(httpSwagger.URL("http://139.59.161.227:3211/choreflow/api/v1/swagger/swagger.yaml")),
 	)
 
 	// serve API endpoints
@@ -38,8 +38,8 @@ func main() {
 	mux.HandleFunc(getURI("GET", "chores"), handlers.ChoresHandler)
 	mux.HandleFunc(getURI("", "assign-chore/{pid}"), handlers.AssignmentHandler)
 
-	log.Printf("Starting api server at http://localhost%s%s\n", port, baseURL)
-	log.Printf("Starting api docs at http://localhost%s%s%s\n", port, baseURL, "swagger/ui")
+	log.Printf("Starting api server at http://139.59.161.227%s%s\n", port, baseURL)
+	log.Printf("Starting api docs at http://139.59.161.227%s%s%s\n", port, baseURL, "swagger/ui")
 
 	if err := http.ListenAndServe(port, mux); err != nil {
 		log.Println(err)
